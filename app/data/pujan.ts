@@ -3,7 +3,7 @@ import { servicesData } from "./data";
 export type PujaCategory = "ग्रह शांति" | "शिव आराधना" | "विशेष संस्कार" | "हवन एवं अनुष्ठान";
 export type Puja = {
   id: string; title: string; description: string; category: PujaCategory;
-  english: string; image: string; imageLabel: string; accent: string; mantra: string;
+  english: string; image: string; imageLabel: string; imageStyle?: "photo" | "illustration"; accent: string; mantra: string;
   introduction: string; purpose: string; offerings: string[];
   steps: { title: string; text: string }[];
   preparation: string; question: string; answer: string; video?: string;
@@ -123,6 +123,27 @@ const additions: Record<string, { english: string; category: PujaCategory; purpo
   "angareshwar-mahadev-puja": { english: "Angareshwar Mahadev Puja", category: "शिव आराधना", purpose: "अंगारेश्वर महादेव की आराधना, अभिषेक और मंगल कामना के साथ धार्मिक संकल्प।" },
 };
 const order = ["kaalsarp-dosh-shanti", "mangal-dosh-shanti", "guru-chandal-dosh-shanti", "vish-dosh-shanti", "shapit-dosh-shanti", "angarak-dosh-shanti", "mahamrityunjay-jaap", "baglamukhi-havan", "shani-shanti", "ark-kumbh-vivah", "rahu-ketu-shanti", "pitra-pujan", "mirchi-havan", "rudrabhishek", "mangalnath-bhat-puja", "angareshwar-mahadev-puja", "navgrah-shanti-puja"];
+<<<<<<< Updated upstream
+=======
+const cardImages: Record<string, Pick<Puja, "image" | "imageLabel" | "imageStyle">> = {
+  "kaalsarp-dosh-shanti": { image: "/pujan/kaalsarp-pujan-illustration.jpeg", imageLabel: "कालसर्प पूजन एवं नाग आराधना का चित्रण", imageStyle: "illustration" },
+  "mangal-dosh-shanti": { image: "/pujan/mangal-bhat-pujan.jpeg", imageLabel: "मंगल आराधना के दौरान मंदिर में पूजन", imageStyle: "photo" },
+  "guru-chandal-dosh-shanti": { image: "/pujan/guru-chandal-yog-illustration.jpeg", imageLabel: "गुरु चांडाल योग एवं ग्रह आराधना का चित्रण", imageStyle: "illustration" },
+  "vish-dosh-shanti": { image: "/pujan/vish-dosh-shanti-illustration.jpeg", imageLabel: "शनि एवं चंद्र से संबंधित विष योग का चित्रण", imageStyle: "illustration" },
+  "shapit-dosh-shanti": { image: "/pujan/grah-shanti-pujan-vedi.jpeg", imageLabel: "ग्रह शांति पूजन के लिए तैयार वेदी", imageStyle: "photo" },
+  "angarak-dosh-shanti": { image: "/pujan/grah-shanti-pujan-vedi.jpeg", imageLabel: "ग्रह आराधना की वेदी एवं पूजन सामग्री", imageStyle: "photo" },
+  "mahamrityunjay-jaap": { image: "/pujan/havan-anushthan.jpeg", imageLabel: "वैदिक हवन एवं सामूहिक अनुष्ठान का दृश्य", imageStyle: "photo" },
+  "baglamukhi-havan": { image: "/pujan/havan-anushthan.jpeg", imageLabel: "हवन में आहुति एवं अनुष्ठान का दृश्य", imageStyle: "photo" },
+  "shani-shanti": { image: "/pujan/grah-shanti-pujan-vedi.jpeg", imageLabel: "ग्रह शांति अनुष्ठान की पूजन व्यवस्था", imageStyle: "photo" },
+  "ark-kumbh-vivah": { image: "/pujan/kumbh-vivah-illustration.jpeg", imageLabel: "कुंभ विवाह संस्कार का चित्रण", imageStyle: "illustration" },
+  "rahu-ketu-shanti": { image: "/pujan/grah-shanti-pujan-vedi.jpeg", imageLabel: "ग्रह आराधना के लिए तैयार पूजन वेदी", imageStyle: "photo" },
+  "mirchi-havan": { image: "/pujan/havan-anushthan.jpeg", imageLabel: "अग्नि एवं मंत्रोच्चार के साथ हवन का दृश्य", imageStyle: "photo" },
+  "mangalnath-bhat-puja": { image: "/pujan/mangal-bhat-pujan.jpeg", imageLabel: "मंगल भात पूजन में श्रद्धालुओं की सहभागिता", imageStyle: "photo" },
+  "navgrah-shanti-puja": { image: "/pujan/navgrah-pujan-vedi.jpeg", imageLabel: "नवग्रह पूजन की वेदी एवं सामग्री", imageStyle: "photo" },
+};
+const existingPhotoIds = new Set(["angareshwar-mahadev-puja", "rudrabhishek"]);
+
+>>>>>>> Stashed changes
 export const pujas: Puja[] = servicesData.items.map(service => {
   const extra = additions[service.id];
   const ritual = ritualById.get(service.id) ?? {
@@ -135,7 +156,12 @@ export const pujas: Puja[] = servicesData.items.map(service => {
     preparation: "संकल्प के लिए नाम, गोत्र और आवश्यक जन्म विवरण रखें। पूजन का स्थान, सामग्री, समय एवं दक्षिणा पहले तय करें।",
     question: `${service.title} की बुकिंग कैसे करें?`, answer: "फोन या WhatsApp पर गुरु जी से संपर्क करके संकल्प, उपलब्ध तिथि और पूजन की व्यवस्था तय करें।",
   };
+<<<<<<< Updated upstream
   return { ...service, ...ritual, imageLabel: ritual.image.includes("agareshwar") ? "अंगारेश्वर महादेव में अभिषेक" : "वैदिक पूजन की वेदी एवं सामग्री" };
+=======
+  const cardImage = cardImages[service.id];
+  return { ...service, ...ritual, image: cardImage?.image ?? ritual.image, imageLabel: cardImage?.imageLabel ?? (ritual.image.includes("agareshwar") ? "अंगारेश्वर महादेव में अभिषेक" : "वैदिक पूजन की वेदी एवं सामग्री"), imageStyle: cardImage?.imageStyle ?? (existingPhotoIds.has(service.id) ? "photo" as const : undefined) };
+>>>>>>> Stashed changes
 }).sort((a,b) => order.indexOf(a.id) - order.indexOf(b.id));
 export const phone = "tel:+916260852654";
 export const whatsapp = (title = "पूजन") => `https://wa.me/916260852654?text=${encodeURIComponent(`नमस्ते गुरु जी, मुझे ${title} की विधि, तिथि और व्यवस्था की जानकारी चाहिए।`)}`;
