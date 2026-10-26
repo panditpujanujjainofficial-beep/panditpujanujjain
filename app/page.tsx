@@ -40,7 +40,9 @@ export default function Home() {
                 <em>गुरु जी – उज्जैन</em>
               </h1>
               <p className="hero-role">M.A. ज्योतिष आचार्य</p>
-              <p className="hero-specialty">ज्योतिष परामर्श एवं वैदिक केंद्र</p>
+              <p className="hero-specialty">
+                शिव शक्ति अनुष्ठान ज्योतिष केंद्र
+              </p>
               <p className="hero-description">
                 <strong>
                   15 वर्षों से ज्योतिष एवं वैदिक पूजन में समर्पित।
