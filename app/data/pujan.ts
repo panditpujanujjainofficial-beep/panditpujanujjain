@@ -508,25 +508,30 @@ const cardImages: Record<
   string,
   Pick<Puja, "image" | "imageLabel" | "imageStyle">
 > = {
+  "pitra-pujan": {
+    image: "/pujan/pitra-pujan-generated.webp",
+    imageLabel: "पितृ तर्पण एवं पूजन की तैयारी का चित्रण",
+    imageStyle: "photo",
+  },
   "kaalsarp-dosh-shanti": {
-    image: "/pujan/kaalsarp-pujan-illustration.jpeg",
-    imageLabel: "कालसर्प पूजन एवं नाग आराधना का चित्रण",
-    imageStyle: "illustration",
+    image: "/pujan/kaalsarp-pujan-generated.webp",
+    imageLabel: "शिवलिंग एवं नाग आराधना का चित्रण",
+    imageStyle: "photo",
   },
   "mangal-dosh-shanti": {
-    image: "/pujan/mangal-bhat-pujan.jpeg",
-    imageLabel: "मंगल आराधना के दौरान मंदिर में पूजन",
+    image: "/pujan/mangal-dosh-generated.webp",
+    imageLabel: "मंगल आराधना की लाल पूजन वेदी का चित्रण",
     imageStyle: "photo",
   },
   "guru-chandal-dosh-shanti": {
-    image: "/pujan/guru-chandal-yog-illustration.jpeg",
-    imageLabel: "गुरु चांडाल योग एवं ग्रह आराधना का चित्रण",
-    imageStyle: "illustration",
+    image: "/pujan/guru-chandal-pujan-generated.webp",
+    imageLabel: "गुरु आराधना की पूजन वेदी का चित्रण",
+    imageStyle: "photo",
   },
   "vish-dosh-shanti": {
-    image: "/pujan/vish-dosh-shanti-illustration.jpeg",
-    imageLabel: "शनि एवं चंद्र से संबंधित विष योग का चित्रण",
-    imageStyle: "illustration",
+    image: "/pujan/vish-dosh-pujan-generated.webp",
+    imageLabel: "शिव आराधना एवं शांति पूजन का चित्रण",
+    imageStyle: "photo",
   },
   "shapit-dosh-shanti": {
     image: "/pujan/grah-shanti-pujan-vedi.jpeg",
@@ -534,13 +539,13 @@ const cardImages: Record<
     imageStyle: "photo",
   },
   "angarak-dosh-shanti": {
-    image: "/pujan/grah-shanti-pujan-vedi.jpeg",
-    imageLabel: "ग्रह आराधना की वेदी एवं पूजन सामग्री",
+    image: "/pujan/angarak-pujan-generated.webp",
+    imageLabel: "अंगारक शांति पूजन की सामग्री का चित्रण",
     imageStyle: "photo",
   },
   "mahamrityunjay-jaap": {
-    image: "/pujan/havan-anushthan.jpeg",
-    imageLabel: "वैदिक हवन एवं सामूहिक अनुष्ठान का दृश्य",
+    image: "/pujan/mahamrityunjay-jaap-generated.webp",
+    imageLabel: "महामृत्युंजय जप की शिव वेदी का चित्रण",
     imageStyle: "photo",
   },
   "baglamukhi-havan": {
@@ -549,23 +554,23 @@ const cardImages: Record<
     imageStyle: "photo",
   },
   "shani-shanti": {
-    image: "/pujan/grah-shanti-pujan-vedi.jpeg",
-    imageLabel: "ग्रह शांति अनुष्ठान की पूजन व्यवस्था",
+    image: "/pujan/shani-shanti-generated.webp",
+    imageLabel: "शनि शांति पूजन की वेदी का चित्रण",
     imageStyle: "photo",
   },
   "ark-kumbh-vivah": {
-    image: "/pujan/kumbh-vivah-illustration.jpeg",
-    imageLabel: "कुंभ विवाह संस्कार का चित्रण",
-    imageStyle: "illustration",
+    image: "/pujan/kumbh-vivah-generated.webp",
+    imageLabel: "कुंभ विवाह की कलश स्थापना का चित्रण",
+    imageStyle: "photo",
   },
   "rahu-ketu-shanti": {
-    image: "/pujan/grah-shanti-pujan-vedi.jpeg",
-    imageLabel: "ग्रह आराधना के लिए तैयार पूजन वेदी",
+    image: "/pujan/rahu-ketu-shanti-generated.webp",
+    imageLabel: "राहु केतु शांति पूजन की वेदी का चित्रण",
     imageStyle: "photo",
   },
   "mirchi-havan": {
-    image: "/pujan/havan-anushthan.jpeg",
-    imageLabel: "अग्नि एवं मंत्रोच्चार के साथ हवन का दृश्य",
+    image: "/pujan/mirchi-havan-generated.webp",
+    imageLabel: "मिर्ची हवन की तैयारी का चित्रण",
     imageStyle: "photo",
   },
   "mangalnath-bhat-puja": {
@@ -576,6 +581,11 @@ const cardImages: Record<
   "navgrah-shanti-puja": {
     image: "/pujan/navgrah-pujan-vedi.jpeg",
     imageLabel: "नवग्रह पूजन की वेदी एवं सामग्री",
+    imageStyle: "photo",
+  },
+  "angareshwar-mahadev-puja": {
+    image: "/pujan/angareshwar-pujan-generated.webp",
+    imageLabel: "महादेव पूजन की शिव वेदी का चित्रण",
     imageStyle: "photo",
   },
 };
@@ -636,5 +646,6 @@ export const pujas: Puja[] = servicesData.items
   })
   .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
 export const phone = "tel:+916260852654";
+export const alternatePhone = "tel:+918224017407";
 export const whatsapp = (title = "पूजन") =>
   `https://wa.me/916260852654?text=${encodeURIComponent(`नमस्ते गुरु जी, मुझे ${title} की विधि, तिथि और व्यवस्था की जानकारी चाहिए।`)}`;

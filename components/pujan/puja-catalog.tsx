@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowUpRight,
-  ArrowRight,
+  Phone,
   Orbit,
   Sun,
   Moon,
@@ -14,7 +13,7 @@ import {
   Waves,
   CircleDot,
 } from "lucide-react";
-import { pujas, whatsapp, type Puja } from "@/app/data/pujan";
+import { pujas, phone, type Puja } from "@/app/data/pujan";
 
 const ritualIcons: Record<string, typeof Orbit> = {
   "mangal-dosh-shanti": Sun,
@@ -70,8 +69,7 @@ function PujaVisual({ puja }: { puja: Puja }) {
 
 export function PujaCard({ puja, index = 0 }: { puja: Puja; index?: number }) {
   return (
-    <Link
-      href={`/services#${puja.id}`}
+    <article
       className="puja-card"
       style={{ "--puja-accent": puja.accent } as React.CSSProperties}
     >
@@ -82,11 +80,15 @@ export function PujaCard({ puja, index = 0 }: { puja: Puja; index?: number }) {
         </small>
         <h3>{puja.title}</h3>
         <p>{puja.description}</p>
-        <span className="card-link">
-          पूजन के बारे में जानें <ArrowRight size={17} />
-        </span>
+        <a
+          href={phone}
+          className="pujan-button puja-call-button"
+          aria-label={`${puja.title} के लिए कॉल करें`}
+        >
+          <Phone size={17} aria-hidden="true" /> कॉल करें
+        </a>
       </div>
-    </Link>
+    </article>
   );
 }
 export function PujaCatalog() {
@@ -124,12 +126,11 @@ export function PujaExplanation({
           <p>{puja.steps.map((step) => step.title).join(" · ")}</p>
         </div>
         <a
-          href={whatsapp(puja.title)}
-          className="pujan-text-link"
-          target="_blank"
-          rel="noopener noreferrer"
+          href={phone}
+          className="pujan-button puja-call-button"
+          aria-label={`${puja.title} के लिए कॉल करें`}
         >
-          इस पूजन के बारे में पूछें <ArrowUpRight size={17} />
+          <Phone size={17} aria-hidden="true" /> कॉल करें
         </a>
       </div>
     </article>

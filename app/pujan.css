@@ -9569,3 +9569,58 @@ h2 {
 .service-explanation .puja-card-image:has(.service-illustration) {
   min-height: 220px;
 }
+
+
+/* Clear call actions for catalog cards and service descriptions. */
+.puja-card-body .puja-call-button,
+.service-explanation-copy .puja-call-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: 1px solid var(--brand-maroon);
+  border-radius: 10px;
+  background: var(--brand-maroon);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  box-shadow: 0 4px 12px #801d3020;
+  transition: background .2s, box-shadow .2s;
+}
+.puja-card-body .puja-call-button { width: 100%; }
+.puja-call-button:hover {
+  background: var(--brand-maroon-hover);
+  box-shadow: 0 6px 16px #801d3030;
+}
+.puja-call-button:focus-visible {
+  outline: 3px solid var(--brand-gold);
+  outline-offset: 4px;
+}
+
+
+.contact-details-card {
+  min-width: 0;
+  padding: clamp(24px, 4vw, 40px);
+  background: #fffdfa;
+  border: 1px solid var(--brand-border);
+  border-top: 4px solid var(--brand-gold);
+  border-radius: 18px;
+  box-shadow: var(--brand-shadow);
+}
+.contact-details-card h3 { color: var(--brand-maroon); font-size: 25px; }
+.contact-details-card > p { margin-top: 10px; color: var(--brand-muted); font-size: 14px; line-height: 1.9; }
+.contact-details-list { margin-block: 24px; }
+.contact-details-list > div { padding-block: 18px; border-bottom: 1px solid var(--brand-border); }
+.contact-details-list dt { display: flex; align-items: center; gap: 10px; color: var(--brand-maroon); font-size: 13px; font-weight: 600; }
+.contact-details-list dd { margin: 9px 0 0 30px; color: var(--brand-maroon); font-size: 17px; line-height: 1.8; overflow-wrap: anywhere; }
+.contact-details-list dd a { display: inline-flex; align-items: center; gap: 8px; }
+.contact-details-list address { font-style: normal; font-size: 15px; }
+.contact-details-card > .pujan-button { width: 100%; justify-content: center; }
+.contact-directions { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 18px; color: var(--brand-maroon); font-size: 14px; min-height: 44px; }
+.contact-details-card .contact-details-note { font-size: 12px; text-align: center; }
+.contact-details-card a:focus-visible { outline: 3px solid var(--brand-gold); outline-offset: 4px; }

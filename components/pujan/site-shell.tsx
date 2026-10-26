@@ -7,7 +7,7 @@ import {
   MessageCircle,
   ArrowUp,
 } from "lucide-react";
-import { phone, pujas, whatsapp } from "@/app/data/pujan";
+import { phone, alternatePhone, pujas, whatsapp } from "@/app/data/pujan";
 import { ResponsiveNavigation } from "./mobile-navigation";
 
 function SiteLogo({ footer = false }: { footer?: boolean }) {
@@ -76,6 +76,9 @@ export function PujanFooter() {
             </p>
             <a className="footer-call" href={phone}>
               <Phone size={16} /> +91 62608 52654
+            </a>
+            <a className="footer-call" href={alternatePhone}>
+              <Phone size={16} /> वैकल्पिक नंबर: +91 82240 17407
             </a>
           </div>
           <div>

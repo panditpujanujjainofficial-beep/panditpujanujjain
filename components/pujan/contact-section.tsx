@@ -1,22 +1,8 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { ArrowUpRight, MapPin, Phone, MessageCircle } from "lucide-react";
-import { phone, pujas } from "@/app/data/pujan";
+import { phone, alternatePhone, whatsapp } from "@/app/data/pujan";
 import { Eyebrow } from "./site-shell";
 
 export function ContactSection({ pujaTitle }: { pujaTitle?: string }) {
-  const [sent, setSent] = useState(false);
-  function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const message = `नमस्ते गुरु जी, मेरा नाम ${String(data.get("name")).trim()} है। मुझे ${data.get("puja")} की जानकारी चाहिए।${data.get("date") ? ` प्रस्तावित तिथि: ${data.get("date")}।` : ""}${data.get("message") ? ` मेरा प्रश्न: ${data.get("message")}` : ""} कृपया विधि, सामग्री, स्थान और दक्षिणा की जानकारी दें।`;
-    window.location.assign(
-      `https://wa.me/916260852654?text=${encodeURIComponent(message)}`,
-    );
-    setSent(true);
-  }
   return (
     <section id="contact" className="contact-section section-space">
       <div className="pujan-container contact-grid">
@@ -50,65 +36,31 @@ export function ContactSection({ pujaTitle }: { pujaTitle?: string }) {
             </p>
           </div>
         </div>
-        <form className="pujan-form" onSubmit={submit}>
-          <h3>पूजन के बारे में पूछें</h3>
-          <p>अपनी जानकारी भरें और WhatsApp पर बातचीत शुरू करें।</p>
-          <label htmlFor="contact-name">
-            आपका नाम <span>*</span>
-          </label>
-          <Input
-            id="contact-name"
-            name="name"
-            placeholder="अपना पूरा नाम लिखें"
-            required
-            maxLength={100}
-          />
-          <div className="form-row">
+        <aside className="contact-details-card" aria-labelledby="contact-details-title">
+          <h3 id="contact-details-title">संपर्क विवरण</h3>
+          <p>आचार्य राघव गुरु जी से सीधे संपर्क करें।</p>
+          <dl className="contact-details-list">
             <div>
-              <label htmlFor="contact-puja">पूजन का चयन</label>
-              <select
-                id="contact-puja"
-                name="puja"
-                defaultValue={pujaTitle || "पूजन के चयन में मार्गदर्शन"}
-              >
-                <option>पूजन के चयन में मार्गदर्शन</option>
-                {pujas.map((p) => (
-                  <option key={p.id}>{p.title}</option>
-                ))}
-              </select>
+              <dt><Phone size={20} aria-hidden="true" /> फोन नंबर</dt>
+              <dd><a href={phone}>+91 62608 52654</a></dd>
             </div>
             <div>
-              <label htmlFor="contact-date">
-                प्रस्तावित तिथि <small>(वैकल्पिक)</small>
-              </label>
-              <Input id="contact-date" name="date" type="date" />
+              <dt><Phone size={20} aria-hidden="true" /> वैकल्पिक नंबर</dt>
+              <dd><a href={alternatePhone}>+91 82240 17407</a></dd>
             </div>
-          </div>
-          <label htmlFor="contact-message">
-            आपका प्रश्न <small>(वैकल्पिक)</small>
-          </label>
-          <textarea
-            id="contact-message"
-            name="message"
-            placeholder="पूजन से जुड़ा अपना प्रश्न लिखें…"
-            rows={3}
-            maxLength={1000}
-          />
-          <Button className="pujan-button" type="submit">
-            <MessageCircle size={18} />
-            WhatsApp पर जानकारी लें
-            <ArrowUpRight size={18} />
-          </Button>
-          <small className="form-note">
-            यह WhatsApp खोलेगा। संदेश भेजने और तिथि की पुष्टि के बाद ही व्यवस्था
-            तय होगी।
-          </small>
-          {sent && (
-            <p className="form-feedback" role="status">
-              आपका संदेश तैयार है। WhatsApp खुल रहा है…
-            </p>
-          )}
-        </form>
+            <div>
+              <dt><MessageCircle size={20} aria-hidden="true" /> WhatsApp</dt>
+              <dd><a href={whatsapp(pujaTitle)} target="_blank" rel="noopener noreferrer">+91 62608 52654 <ArrowUpRight size={16} aria-hidden="true" /></a></dd>
+            </div>
+            <div>
+              <dt><MapPin size={20} aria-hidden="true" /> पूजन का स्थान</dt>
+              <dd><address>अंगारेश्वर महादेव मंदिर<br />उज्जैन, मध्य प्रदेश</address></dd>
+            </div>
+          </dl>
+          <a className="pujan-button" href={phone}><Phone size={18} aria-hidden="true" /> कॉल करें</a>
+          <a className="contact-directions" href="https://www.google.com/maps/search/?api=1&query=Angareshwar+Mahadev+Temple+Ujjain" target="_blank" rel="noopener noreferrer">मंदिर का रास्ता देखें <ArrowUpRight size={17} aria-hidden="true" /></a>
+          <p className="contact-details-note">आने से पहले पूजन की तिथि, समय एवं मिलने के स्थान की पुष्टि करें।</p>
+        </aside>
       </div>
     </section>
   );
