@@ -1,3 +1,5 @@
+import { contactLocation } from "./location";
+
 export type NavigationItem = {
   label: string;
   href: `#${string}`;
@@ -15,7 +17,7 @@ export const siteData = {
   name: "आचार्य राघव गुरु जी",
   brandSubtitle: "M.A. ज्योतिष आचार्य · वैदिक पूजन",
   blessing: "॥ श्री गणेशाय नमः । श्री महाकालेश्वराय नमः ॥",
-  location: "मंगलनाथ, उज्जैन",
+  location: contactLocation.address,
   consultationLabel: "परामर्श की जानकारी",
   consultationHref: "#consultation",
   accessibility: {
@@ -37,7 +39,7 @@ export const heroData = {
   heading: "वैदिक परंपरा।",
   highlight: "आध्यात्मिक मार्गदर्शन।",
   introduction: "आचार्य राघव गुरु जी",
-  description: "मंगलनाथ, उज्जैन की पावन भूमि पर पूजन एवं अनुष्ठान। ज्योतिष परामर्श और जन्म कुंडली विश्लेषण के साथ जीवन के महत्वपूर्ण प्रश्नों पर मार्गदर्शन पाएँ।",
+  description: "अंगारेश्वर महादेव मंदिर, उज्जैन की पावन भूमि पर पूजन एवं अनुष्ठान। ज्योतिष परामर्श और जन्म कुंडली विश्लेषण के साथ जीवन के महत्वपूर्ण प्रश्नों पर मार्गदर्शन पाएँ।",
   primaryAction: { label: "पूजन एवं सेवाएँ देखें", href: "#services" },
   secondaryAction: { label: "कुंडली परामर्श", href: "#consultation" },
   image: { src: "/heroPage.png", alt: "आचार्य राघव गुरु जी पारंपरिक वेशभूषा में" },
