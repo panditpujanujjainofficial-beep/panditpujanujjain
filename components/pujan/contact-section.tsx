@@ -1,5 +1,6 @@
 import { ArrowUpRight, MapPin, Phone, MessageCircle } from "lucide-react";
 import { phone, alternatePhone, whatsapp } from "@/app/data/pujan";
+import { contactLocation } from "@/app/data/location";
 import { Eyebrow } from "./site-shell";
 
 export function ContactSection({ pujaTitle }: { pujaTitle?: string }) {
@@ -30,7 +31,9 @@ export function ContactSection({ pujaTitle }: { pujaTitle?: string }) {
           <div className="contact-location">
             <MapPin size={20} />
             <p>
-              अंगारेश्वर महादेव मंदिर, उज्जैन
+              {contactLocation.name}
+              <br />
+              {contactLocation.address}
               <br />
               <small>आने से पहले मिलने के स्थान की पुष्टि करें।</small>
             </p>
@@ -54,11 +57,11 @@ export function ContactSection({ pujaTitle }: { pujaTitle?: string }) {
             </div>
             <div>
               <dt><MapPin size={20} aria-hidden="true" /> पूजन का स्थान</dt>
-              <dd><address>अंगारेश्वर महादेव मंदिर<br />उज्जैन, मध्य प्रदेश</address></dd>
+              <dd><address>{contactLocation.name}<br />{contactLocation.address}</address></dd>
             </div>
           </dl>
           <a className="pujan-button" href={phone}><Phone size={18} aria-hidden="true" /> कॉल करें</a>
-          <a className="contact-directions" href="https://www.google.com/maps/search/?api=1&query=Angareshwar+Mahadev+Temple+Ujjain" target="_blank" rel="noopener noreferrer">मंदिर का रास्ता देखें <ArrowUpRight size={17} aria-hidden="true" /></a>
+          <a className="contact-directions" href={contactLocation.mapsUrl} target="_blank" rel="noopener noreferrer">मंदिर का रास्ता देखें <ArrowUpRight size={17} aria-hidden="true" /></a>
           <p className="contact-details-note">आने से पहले पूजन की तिथि, समय एवं मिलने के स्थान की पुष्टि करें।</p>
         </aside>
       </div>
