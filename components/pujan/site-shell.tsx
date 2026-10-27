@@ -8,6 +8,7 @@ import {
   ArrowUp,
 } from "lucide-react";
 import { phone, alternatePhone, pujas, whatsapp } from "@/app/data/pujan";
+import { contactLocation } from "@/app/data/location";
 import { ResponsiveNavigation } from "./mobile-navigation";
 
 function SiteLogo({ footer = false }: { footer?: boolean }) {
@@ -104,15 +105,19 @@ export function PujanFooter() {
             <Link href="/#process">पूजन की प्रक्रिया</Link>
             <Link href="/#gallery">पूजन की झलकियाँ</Link>
             <Link href="/guide">पूजन गाइड</Link>
+            <Link href="/blog">पूजन एवं ज्योतिष ब्लॉग</Link>
             <Link href="/contact">संपर्क करें</Link>
           </div>
           <div>
             <h3>पूजन के लिए संपर्क</h3>
             <p>
-              अंगारेश्वर महादेव मंदिर
+              {contactLocation.name}
               <br />
-              उज्जैन, मध्य प्रदेश
+              {contactLocation.address}
             </p>
+            <a href={contactLocation.mapsUrl} target="_blank" rel="noopener noreferrer">
+              मंदिर का रास्ता देखें <ArrowUpRight size={14} />
+            </a>
             <a href={whatsapp()} target="_blank" rel="noopener noreferrer">
               WhatsApp पर जानकारी लें <ArrowUpRight size={14} />
             </a>
