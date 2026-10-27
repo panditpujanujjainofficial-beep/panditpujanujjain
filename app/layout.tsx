@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteData } from "./data/data";
 import "./globals.css";
 import "./pujan.css";
+import "./blog.css";
 
 export const metadata: Metadata = {
   title: `${siteData.name} | M.A. ज्योतिष आचार्य | 15 वर्षों का अनुभव | उज्जैन`,

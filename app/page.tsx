@@ -23,6 +23,7 @@ import { PujaCatalog } from "@/components/pujan/puja-catalog";
 import { GalleryContent } from "@/components/pujan/gallery-content";
 import { PujaGuide } from "@/components/pujan/puja-guide";
 import { ContactSection } from "@/components/pujan/contact-section";
+import { BlogPosts } from "@/components/pujan/blog-posts";
 
 export default function Home() {
   return (
@@ -401,6 +402,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <BlogPosts preview />
         <section className="consultation-banner">
           <div className="pujan-container">
             <Flower2 size={38} strokeWidth={1.2} />
