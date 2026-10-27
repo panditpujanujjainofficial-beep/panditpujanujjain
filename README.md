@@ -1,6 +1,6 @@
 # पंडित पूजा उज्जैन
 
-Hindi website for आचार्य राघव गुरु जी, featuring puja services, preparation guidance, ceremony photos and videos, and direct contact options in Ujjain.
+Hindi website for आचार्य राघव गुरु जी, featuring puja services, preparation guidance, ceremony photos and videos, Medium articles, and direct contact options in Ujjain.
 
 ## Features
 
@@ -9,6 +9,7 @@ Hindi website for आचार्य राघव गुरु जी, featuring
 - Distinct service images, including original ceremony photos and generated ritual illustrations.
 - Photo gallery with full-image links and three ceremony videos.
 - Contact details with phone, alternative number, WhatsApp, temple address, and directions.
+- Medium blog with three latest articles on the homepage and up to ten on `/blog`.
 - Custom maroon-and-gold diya SVG favicon, ICO fallback, and Apple touch icon.
 
 ## Stack
@@ -17,14 +18,14 @@ Next.js 16.4.2 App Router, React 19.3, TypeScript, Tailwind CSS 4, shadcn/ui, an
 
 ## Local development
 
-Use Node.js 20.9 or later and npm.
+Use Node.js 20.9 or later and npm. The feed parser test command below requires Node.js 22.6 or later for TypeScript stripping.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. The current site does not require environment variables or a backend service. Contact actions use `tel:` links and WhatsApp links.
+Open http://localhost:3000. No environment variables, database, or API keys are required. Contact actions use `tel:` links and WhatsApp links. The blog fetches Medium's public RSS feed on the server; if Medium is unavailable, the site displays a link to the Medium profile.
 
 ## Checks and production
 
@@ -34,6 +35,9 @@ npm run lint
 
 # Check TypeScript without writing build metadata
 npx tsc --noEmit --incremental false
+
+# Run the Medium RSS parser tests (Node.js 22.6+)
+node --experimental-strip-types --test lib/medium-feed.test.mjs
 
 # Build and serve production output
 npm run build
@@ -50,6 +54,7 @@ Run the production server after the build completes. Deploy to hosting that supp
 | `/services` | Categorized service directory |
 | `/pujan/[slug]` | Individual puja information and preparation |
 | `/gallery` | Full photo gallery |
+| `/blog` | Latest Medium articles with links to the original posts |
 | `/guide` | Puja preparation guide |
 | `/about` | Guru ji's introduction |
 | `/contact` | Contact details and travel preparation |
@@ -62,10 +67,16 @@ Run the production server after the build completes. Deploy to hosting that supp
 | `app/data/pujan.ts` | Service details, image assignments, and shared phone/WhatsApp links |
 | `app/data/gallery.ts` | Photo gallery entries and descriptions |
 | `app/data/navigation.ts` | Navigation links |
+| `app/data/location.ts` | Shared address and Google Maps directions link |
+| `app/page.tsx` | Homepage sections and introductory copy |
+| `app/pujan/[slug]/page.tsx` | Service detail layout, metadata, and generated route parameters |
 | `components/pujan/puja-catalog.tsx` | Service cards and call buttons |
 | `components/pujan/contact-section.tsx` | Shared contact details panel |
 | `components/pujan/site-shell.tsx` | Header, footer, and shared site elements |
 | `app/pujan.css` | Site styling and responsive layouts |
+| `lib/medium.ts` | Medium profile, RSS feed URL, post limit, and server cache settings |
+| `lib/medium-feed.ts` | RSS parsing, article sorting, and URL validation |
+| `components/pujan/blog-posts.tsx`, `app/blog.css` | Shared blog rendering and styling |
 | `app/layout.tsx` | Root layout and default metadata |
 | `public/pujan/` | Photos, generated service images, video posters, and MP4 files |
 | `public/brand/` | Brand logos and image generation prompts |
@@ -89,16 +100,18 @@ The shared contact section displays contact details instead of an enquiry form. 
 
 When changing numbers, update the shared links in `app/data/pujan.ts` and the displayed numbers in the contact section, footer, metadata, and other relevant content. Search for the old number to catch hardcoded copies. The alternative number is a phone contact; WhatsApp currently uses the primary number.
 
-## Repository guidance
-
 ### Medium blog
 
 The homepage displays up to three latest Medium posts; `/blog` lists up to ten latest posts supplied by Medium's public RSS feed. Medium may limit the feed to recent posts, so the blog page also links back to Medium. Article links open the original post on Medium.
 
-`lib/medium.ts` fetches the feed exclusively on the server using a `server-only` boundary. No API key or environment variable is required. `MAX_BLOG_POSTS = 10` caps the parsed posts cached and returned by the server. The RSS request still downloads Medium's full XML response; this is a result limit, not a network fetch limit. Successful results are cached and refreshed in the background after 15 minutes when the site receives traffic. Temporary failures display a Medium link and retry after one minute. The feed URL and profile link are configured in that module.
+The configured profile is [@panditpujanujjainofficial](https://medium.com/@panditpujanujjainofficial). To change accounts, update both `mediumProfile` and the RSS URL in `lib/medium.ts`.
+
+`lib/medium.ts` fetches the feed exclusively on the server using a `server-only` boundary. No API key or environment variable is required. `MAX_BLOG_POSTS = 10` caps the parsed posts cached and returned by the server. The RSS request still downloads Medium's full XML response; this is a result limit, not a network fetch limit. Successful results are cached and become eligible for background refresh after 15 minutes when the site receives traffic. Temporary failures display a Medium link and become eligible for retry after one minute. Requests time out after ten seconds.
 
 `lib/medium-feed.ts` parses RSS into plain excerpts and permits only HTTPS Medium article links and Medium CDN images. `components/pujan/blog-posts.tsx` renders the shared feed; `app/blog.css` styles the cards.
 
-Run the feed parser checks with `node --experimental-strip-types --test lib/medium-feed.test.mjs`.
+Blog images use Next.js image optimization. The allowed Medium CDN hosts are configured in `next.config.ts`; image URL validation lives in `lib/medium-feed.ts`.
+
+## Repository guidance
 
 Follow `AGENTS.md`. Before changing Next.js code, read the relevant version-specific documentation in `node_modules/next/dist/docs/`.
