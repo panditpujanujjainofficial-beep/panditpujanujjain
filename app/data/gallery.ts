@@ -1,8 +1,8 @@
 export const galleryPhotos = [
-  { src: "/pujan/mangal-kalash-vedi.jpeg", title: "मंगल कलश की सज्जा", text: "पुष्प एवं पूजन सामग्री से सजी वेदी" },
-  { src: "/pujan/sampurna-pujan-vedi.jpeg", title: "सम्पूर्ण पूजन वेदी", text: "कलश, प्रतिमाओं एवं पूजन सामग्री की व्यवस्था" },
-  { src: "/pujan/ganesh-kalash-pujan.jpeg", title: "गणेश एवं कलश पूजन", text: "पीली एवं लाल वेदी पर पूजन की सज्जा" },
   { src: "/pujan/agareshwar.jpeg", title: "अंगारेश्वर महादेव में अभिषेक", text: "शिव आराधना में गुरु जी" },
+  { src: "/pujan/sampurna-pujan-vedi.jpeg", title: "सम्पूर्ण पूजन वेदी", text: "कलश, प्रतिमाओं एवं पूजन सामग्री की व्यवस्था" },
+  { src: "/pujan/mangal-kalash-vedi.jpeg", title: "मंगल कलश की सज्जा", text: "पुष्प एवं पूजन सामग्री से सजी वेदी" },
+  { src: "/pujan/ganesh-kalash-pujan.jpeg", title: "गणेश एवं कलश पूजन", text: "पीली एवं लाल वेदी पर पूजन की सज्जा" },
   { src: "/pujan/pujanMangal.jpeg", title: "वैदिक पूजन की वेदी", text: "कलश, पूजन सामग्री एवं संकल्प" },
   { src: "/pujan/punan_place.jpeg", title: "पूजन स्थल की झलक", text: "श्रद्धालुओं के साथ अनुष्ठान" },
   { src: "/panditJi.jpeg", title: "आचार्य राघव गुरु जी", text: "पूजन के दौरान गुरु जी का चित्र" },
