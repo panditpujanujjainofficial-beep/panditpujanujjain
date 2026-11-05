@@ -4,7 +4,24 @@ import { ContentPage } from "@/components/pujan/content-page";
 
 export const metadata: Metadata = {
   title: "पूजन एवं ज्योतिष ब्लॉग | आचार्य राघव गुरु जी – उज्जैन",
-  description: "पूजा-पाठ, वैदिक परंपराओं, ज्योतिष एवं उज्जैन से जुड़े पंडित पूजा उज्जैन के नवीनतम Medium लेख पढ़ें।",
+  description:
+    "पूजा-पाठ, वैदिक परंपराओं, ज्योतिष एवं उज्जैन से जुड़े पंडित पूजा उज्जैन के नवीनतम Medium लेख पढ़ें।",
+  keywords: [
+    "उज्जैन ज्योतिष ब्लॉग",
+    "वैदिक पूजा लेख",
+    "कालसर्प दोष निवारण उपाय",
+    "मंगल दोष निवारण जानकारी",
+    "धार्मिक अनुष्ठान ब्लॉग",
+    "ujjain astrology blog",
+    "vedic puja vidhi articles",
+    "hindu astrology ujjain",
+  ],
+  openGraph: {
+    title: "पूजन एवं ज्योतिष ब्लॉग | आचार्य राघव गुरु जी – उज्जैन",
+    description:
+      "पूजा-पाठ, वैदिक परंपराओं, ज्योतिष एवं उज्जैन से जुड़े पंडित पूजा उज्जैन के नवीनतम Medium लेख पढ़ें।",
+    locale: "hi_IN",
+  },
 };
 
 export default function BlogPage() {

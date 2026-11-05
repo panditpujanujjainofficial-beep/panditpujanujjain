@@ -14,7 +14,36 @@ export function generateStaticParams() { return pujas.map(p=>({slug:p.id})); }
 export async function generateMetadata({params}:Props):Promise<Metadata> {
   const {slug}=await params;
   const current=pujas.find(p=>p.id===slug);
-  return {title: current ? `${current.title} उज्जैन | आचार्य राघव गुरु जी` : "पूजन नहीं मिला", description: current?.description};
+  if (!current) return { title: "पूजन नहीं मिला" };
+  return {
+    title: `${current.title} उज्जैन | आचार्य राघव गुरु जी`,
+    description: `${current.title} उज्जैन - ${current.description} वैदिक विधि से आचार्य राघव गुरु जी द्वारा संपन्न। संपर्क: +91 62608 52654।`,
+    keywords: [
+      current.title,
+      `${current.title} उज्जैन`,
+      `${current.title} विधि`,
+      `${current.title} तैयारी`,
+      `${current.title} सामग्री`,
+      current.english,
+      `${current.english} Ujjain`,
+      `${current.english} Puja`,
+      `${current.english} Vidhi`,
+      current.category,
+      `${current.category} उज्जैन`,
+      "उज्जैन में पंडित",
+      "pandit in ujjain",
+      "आचार्य राघव गुरु जी",
+      "Acharya Raghav Guru Ji",
+      "वैदिक पूजन उज्जैन",
+      "ujjain puja booking",
+    ],
+    openGraph: {
+      title: `${current.title} उज्जैन | आचार्य राघव गुरु जी`,
+      description: current.description,
+      type: "article",
+      locale: "hi_IN",
+    },
+  };
 }
 export default async function PujaPage({params}: Props) {
   const {slug}=await params;

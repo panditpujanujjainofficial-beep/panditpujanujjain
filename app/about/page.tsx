@@ -5,7 +5,29 @@ import { ArrowUpRight, Award, BookOpen, Check, HandHeart, MapPin } from "lucide-
 import { ContentPage } from "@/components/pujan/content-page";
 import { Eyebrow } from "@/components/pujan/site-shell";
 
-export const metadata: Metadata = { title: "गुरु जी का परिचय | M.A. ज्योतिष आचार्य राघव गुरु जी", description: "आचार्य राघव गुरु जी, M.A. ज्योतिष आचार्य — उज्जैन में 15 वर्षों से वैदिक पूजा-पाठ, ज्योतिष एवं धार्मिक अनुष्ठानों में समर्पित।" };
+export const metadata: Metadata = {
+  title: "गुरु जी का परिचय | M.A. ज्योतिष आचार्य राघव गुरु जी",
+  description:
+    "आचार्य राघव गुरु जी, M.A. ज्योतिष आचार्य — उज्जैन में 15 वर्षों से वैदिक पूजा-पाठ, ज्योतिष एवं धार्मिक अनुष्ठानों में समर्पित।",
+  keywords: [
+    "आचार्य राघव गुरु जी",
+    "आचार्य राघव गुरु जी उज्जैन",
+    "M.A. ज्योतिष आचार्य",
+    "उज्जैन के पंडित",
+    "उज्जैन ज्योतिष आचार्य",
+    "Acharya Raghav Guru Ji",
+    "pandit raghav guru ji",
+    "best astrologer ujjain",
+    "famous pandit ujjain",
+    "vedic pandit in ujjain",
+  ],
+  openGraph: {
+    title: "गुरु जी का परिचय | M.A. ज्योतिष आचार्य राघव गुरु जी",
+    description:
+      "आचार्य राघव गुरु जी, M.A. ज्योतिष आचार्य — उज्जैन में 15 वर्षों से वैदिक पूजा-पाठ, ज्योतिष एवं धार्मिक अनुष्ठानों में समर्पित।",
+    locale: "hi_IN",
+  },
+};
 export default function AboutPage() {
   return <ContentPage image={{ src: "/pujan/agareshwar.jpeg", caption: "अंगारेश्वर महादेव में गुरु जी द्वारा अभिषेक" }} title="आचार्य राघव गुरु जी" eyebrow="M.A. ज्योतिष आचार्य · उज्जैन" description="15 वर्षों से भगवान महाकाल की पावन नगरी में श्रद्धा, वैदिक परंपरा और व्यक्तिगत मार्गदर्शन के साथ।">
     <section className="section-space"><div className="pujan-container profile-grid"><figure className="profile-portrait"><div><Image src="/panditJi.jpeg" alt="आचार्य राघव गुरु जी वैदिक पूजन के दौरान" fill priority sizes="(max-width: 700px) 90vw, 40vw" /></div><figcaption><Award size={21} /><span><strong>M.A. ज्योतिष आचार्य</strong><small>आचार्य राघव गुरु जी – उज्जैन</small></span></figcaption></figure><div className="profile-copy"><Eyebrow>गुरु जी का परिचय</Eyebrow><h2>परंपरा का सम्मान,<br /><em>हर संकल्प में समर्पण।</em></h2><p>आचार्य राघव गुरु जी पिछले 15 वर्षों से पवित्र नगरी उज्जैन में धार्मिक पूजा-पाठ एवं वैदिक अनुष्ठान कर रहे हैं। भगवान महाकाल की नगरी में गुरु जी श्रद्धा, आस्था और वैदिक परंपराओं के अनुसार विभिन्न धार्मिक पूजाएँ संपन्न कराते हैं।</p><p>कालसर्प दोष पूजा, मंगल दोष निवारण पूजा, मंगल भात पूजा, अंगारेश्वर महादेव पूजा, महामृत्युंजय जप एवं अन्य धार्मिक अनुष्ठानों के दौरान विधि-विधान, मंत्रोच्चार और धार्मिक परंपराओं का विशेष ध्यान रखा जाता है।</p><div className="profile-facts"><div><Award size={20} /><span><strong>15 वर्षों का अनुभव</strong><small>पूजन एवं ज्योतिष में समर्पित</small></span></div><div><MapPin size={20} /><span><strong>पवित्र नगरी उज्जैन</strong><small>मध्य प्रदेश</small></span></div></div><Link href="/contact" className="pujan-button">गुरु जी से परामर्श लें <ArrowUpRight size={18} /></Link></div></div></section>
